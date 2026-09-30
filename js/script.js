@@ -80,7 +80,7 @@ associationToggles.forEach((toggle) => {
 syncAssociationState();
 
 function buildWhatsappUrl(number) {
-  const text = encodeURIComponent("Hola Rocio, quiero asesoramiento sobre Travorium.");
+  const text = encodeURIComponent("Hola Rocío, quiero asesoramiento sobre Travorium.");
   return `https://wa.me/${number}?text=${text}`;
 }
 
@@ -96,7 +96,7 @@ whatsappLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault();
     if (formStatus) {
-      formStatus.textContent = "Tambien puedes escribir a Rocio por email o usar el boton de contacto principal.";
+      formStatus.textContent = "También puedes escribir a Rocío por email o usar el botón de contacto principal.";
     }
   });
 });
@@ -109,11 +109,11 @@ leadForm?.addEventListener("submit", (event) => {
   const phone = String(formData.get("telefono") || "").trim();
   const subject = encodeURIComponent("Solicitud de asesoramiento Travorium");
   const body = encodeURIComponent(
-    `Hola Rocio,\n\nQuiero solicitar asesoramiento sobre la membresia Travorium.\n\nNombre: ${name}\nEmail: ${email}\nTelefono: ${phone}\n\nGracias.`
+    `Hola Rocío,\n\nQuiero solicitar asesoramiento sobre la membresía Travorium.\n\nNombre: ${name}\nEmail: ${email}\nTeléfono: ${phone}\n\nGracias.`
   );
 
   window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
   if (formStatus) {
-    formStatus.textContent = "Se abrira tu correo para enviar la solicitud a Rocio.";
+    formStatus.textContent = "Se abrirá tu correo para enviar la solicitud a Rocío.";
   }
 });
