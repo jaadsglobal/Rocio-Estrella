@@ -12,6 +12,7 @@ const toggleSymbols = document.querySelectorAll("[data-toggle-symbol]");
 const priceSummaries = document.querySelectorAll("[data-price-summary]");
 const totalPrices = document.querySelectorAll("[data-total-price]");
 const associationPills = document.querySelectorAll("[data-association-pill]");
+const contactEmail = "rocioestrellatravel@gmail.com";
 let associationSelected = true;
 
 // Sticky header state.
@@ -95,15 +96,24 @@ whatsappLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault();
     if (formStatus) {
-      formStatus.textContent = "WhatsApp pendiente de activar. Anade el numero real en data-whatsapp-number.";
+      formStatus.textContent = "Tambien puedes escribir a Rocio por email o usar el boton de contacto principal.";
     }
   });
 });
 
-// Lead capture is intentionally disabled until a real contact channel is configured.
 leadForm?.addEventListener("submit", (event) => {
   event.preventDefault();
+  const formData = new FormData(leadForm);
+  const name = String(formData.get("nombre") || "").trim();
+  const email = String(formData.get("email") || "").trim();
+  const phone = String(formData.get("telefono") || "").trim();
+  const subject = encodeURIComponent("Solicitud de asesoramiento Travorium");
+  const body = encodeURIComponent(
+    `Hola Rocio,\n\nQuiero solicitar asesoramiento sobre la membresia Travorium.\n\nNombre: ${name}\nEmail: ${email}\nTelefono: ${phone}\n\nGracias.`
+  );
+
+  window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
   if (formStatus) {
-    formStatus.textContent = "Formulario pendiente de conectar. Completa el email, WhatsApp o CRM real antes de publicar.";
+    formStatus.textContent = "Se abrira tu correo para enviar la solicitud a Rocio.";
   }
 });
